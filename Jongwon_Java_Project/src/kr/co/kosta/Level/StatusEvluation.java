@@ -6,8 +6,10 @@ public class StatusEvluation implements LevelEvaluation {
 	public String getLevel(int authority) {
 		String status = null;
 		if (authority == 1002) {
+
 			if (status == "couple") {
-				System.out.println("커플 페이지 사용하시겠습니까?");
+//				System.out.println("커플 페이지 사용하시겠습니까?");
+
 			} else {
 				status = "none";
 				System.out.println("마이페이지로 이동하겠습니다.");

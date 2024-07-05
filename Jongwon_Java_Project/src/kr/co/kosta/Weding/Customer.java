@@ -5,15 +5,18 @@ import java.util.ArrayList;
 public class Customer {
 	private String customerName;
 	private int customerId;
+	private String customerPhoneNum;
+
 	private Function majorfunction;
 	private ArrayList<Authority> authorities = new ArrayList<>(); // 권한 리스트
 
 	public Customer() {
 	}
 
-	public Customer(String customerName, int customerId) {
+	public Customer(String customerName, int customerId, String customerPhoneNum) {
 		this.customerName = customerName;
 		this.customerId = customerId;
+		this.customerPhoneNum = customerPhoneNum;
 
 	}
 
