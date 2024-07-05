@@ -38,6 +38,7 @@ public class Subject {
 		this.gradeType = gradeType;
 	}
 
+//-------------------------------------- 메소드
 	public ArrayList<Student> getStudents() {
 		return students;
 	}

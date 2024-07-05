@@ -33,6 +33,7 @@ public class School {
 		this.subjects = subjects;
 	}
 
+//	----
 	public void addSubject(Subject subject) {
 		subjects.add(subject);
 	}

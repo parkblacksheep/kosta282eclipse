@@ -47,6 +47,7 @@ public class Student {
 		this.majorSubject = majorSubject;
 	}
 
+//	-------------------------------------- 메소드 
 	public void addSubjectScore(Score score) {
 		scores.add(score);
 	}
