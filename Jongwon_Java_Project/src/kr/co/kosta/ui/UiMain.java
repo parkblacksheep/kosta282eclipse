@@ -1,9 +1,12 @@
 package kr.co.kosta.ui;
 
+import java.time.LocalDate;
+
 import kr.co.kosta.Weding.Authority;
 import kr.co.kosta.Weding.Customer;
 import kr.co.kosta.Weding.Function;
 import kr.co.kosta.Weding.Hole;
+import kr.co.kosta.Weding.Studio;
 import kr.co.kosta.Weding.view.WeddeingDisplay;
 import kr.co.kosta.utils.Constant;
 
@@ -21,18 +24,38 @@ public class UiMain {
 		uiMain.createFunction();
 		// 고객 생성
 		uiMain.createCustomer();
+		// 스튜디오 생성
+		uiMain.createStudio();
 
 		// 웨딩 디스플레이를 출력함
 		String display = uiMain.weddeingDisplay.getDisplay();
 		System.out.println(display);
 	}
 
+	private void createStudio() {
+		LocalDate reservationDate1 = LocalDate.of(2024, 3, 5);
+		LocalDate reservationDate2 = LocalDate.of(2024, 5, 7);
+		Studio studio1 = new Studio("S스튜디오", reservationDate1);
+		Studio studio2 = new Studio("T스튜디오", reservationDate2);
+
+		hole.addStudio(studio1);
+		myProfile.register(studio1);
+		VisitPlan.register(studio1);
+		ReservationSituation.register(studio1);
+
+		hole.addStudio(studio2);
+		myProfile.register(studio2);
+		VisitPlan.register(studio2);
+		ReservationSituation.register(studio2);
+//		addCustomerNameForStudio(studio1, );
+	}
+
 	private void createCustomer() {
 		// 고객 생성
-		Customer customer1 = new Customer("권상민", 20240704, "01026467154");
-		Customer customer2 = new Customer("백종원", 20240705, "01055627154");
-		Customer customer3 = new Customer("차은우", 20240706, "01078957154");
-		Customer customer4 = new Customer("김지우", 20240707, "01084267154");
+		Customer customer1 = new Customer("권상민", 20240704, "01026467154", "p384438", "970305");
+		Customer customer2 = new Customer("백종원", 20240705, "01055627154", "dqwe958", "941215");
+		Customer customer3 = new Customer("차은우", 20240706, "01078957154", "3bvkw2", "460815");
+		Customer customer4 = new Customer("김지우", 20240707, "01084267154", "8946bmj", "467851");
 
 		hole.addCustomer(customer1);
 		hole.addCustomer(customer2);
@@ -76,6 +99,10 @@ public class UiMain {
 		// 권한을 고객에게 부여
 		Authority authList = new Authority(customer.getCustomerId(), function, authority);
 		customer.addFunctionAuthority(authList);
+	}
+
+	private void addCustomerNameForStudio(Studio studio, String customerName) {
+		studio.addCustomers(customerName);
 	}
 
 	private void createFunction() {

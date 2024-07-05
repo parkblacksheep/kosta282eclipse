@@ -6,18 +6,27 @@ public class Customer {
 	private String customerName;
 	private int customerId;
 	private String customerPhoneNum;
+	private String customerMail;
+	private String birthDay;
 
 	private Function majorfunction;
 	private ArrayList<Authority> authorities = new ArrayList<>(); // 권한 리스트
 
-	public Customer() {
+	public Customer(String customerName) {
+		this.customerName = customerName;
 	}
 
-	public Customer(String customerName, int customerId, String customerPhoneNum) {
+	public Customer(String customerName, int customerId, String customerPhoneNum, String customerMail,
+			String birthDay) {
 		this.customerName = customerName;
 		this.customerId = customerId;
 		this.customerPhoneNum = customerPhoneNum;
+		this.customerMail = customerMail;
+		this.birthDay = birthDay;
+	}
 
+	public String getCustomerPhoneNum() {
+		return customerPhoneNum;
 	}
 
 	public String getCustomerName() {
@@ -50,6 +59,14 @@ public class Customer {
 
 	public void setMajorfunction(Function majorfunction) {
 		this.majorfunction = majorfunction;
+	}
+
+	public String getCustomerMail() {
+		return customerMail;
+	}
+
+	public String getBirthDay() {
+		return birthDay;
 	}
 
 	// -----------------------메소드

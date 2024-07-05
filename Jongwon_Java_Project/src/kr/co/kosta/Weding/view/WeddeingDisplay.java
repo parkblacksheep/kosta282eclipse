@@ -9,6 +9,7 @@ import kr.co.kosta.Weding.Authority;
 import kr.co.kosta.Weding.Customer;
 import kr.co.kosta.Weding.Function;
 import kr.co.kosta.Weding.Hole;
+import kr.co.kosta.Weding.Studio;
 import kr.co.kosta.utils.Constant;
 
 public class WeddeingDisplay {
@@ -16,9 +17,9 @@ public class WeddeingDisplay {
 //	-> getInstance로 싱글톤 패턴을 가져옴
 	public static final String Section = "마이 페이지\n";
 
-	public static final String Line = "\n================================\n";
-	public static final String HEADER = "이름 \t 고객번호 \t 전화번호 \t 메일 \t 생일 \t  \n";
-	public static final String Line2 = "-------------------------------\n";
+	public static final String Line = "\n======================================\n";
+	public static final String HEADER = "이름 \t 고객번호 \t 전화번호 \t\t 메일 \t\t\t\t    생일 \t  \n";
+	public static final String Line2 = "---------------------------------------\n";
 
 	public static final String table = "스튜디오명 \t 예약자 \t 금일 예약 시간\t   \n";
 
@@ -47,16 +48,46 @@ public class WeddeingDisplay {
 
 	private void makeBody(Function function) {
 		ArrayList<Customer> customers = function.getCustomers();
-		for (int i = 0; i < customers.size(); i++) {
-			Customer customer = customers.get(i);
-			buffer.append(customer.getCustomerName());
-			buffer.append("\t");
-			buffer.append(customer.getCustomerId());
-			buffer.append("\t");
+		ArrayList<Studio> studios = function.getStudios();
+		if (function.getFuntionName() == "나의 프로필 정보") {
+			for (int i = 0; i < customers.size(); i++) {
+				Customer customer = customers.get(i);
+				buffer.append(customer.getCustomerName());
+				buffer.append("\t");
+				buffer.append(customer.getCustomerId());
+				buffer.append("\t");
+				buffer.append(customer.getCustomerPhoneNum());
+				buffer.append("\t\t");
+				buffer.append(customer.getCustomerMail());
+				buffer.append("@naver.com");
+				buffer.append("\t\t");
+				buffer.append(customer.getBirthDay());
+				buffer.append("\n");
+			}
+		} else if (function.getFuntionName() == "금일 방문 일정") {
+			for (int i = 0; i < studios.size(); i++) {
+				Studio studio = studios.get(i);
 
-//			buffer.append(customer.getMajorfunction().getFuntionName());
-			buffer.append("\n");
+				buffer.append(studio.getStudioName());
+				buffer.append("\t");
+				buffer.append(studio.getCustomerName());
+				buffer.append("\t");
+//				-> 이 부분에서 customer 를 연결하는 방식으로 하여야 한다.
+				buffer.append(studio.getReservationDate());
+				buffer.append("\n");
+			}
+		} else if (function.getFuntionName() == "현재 예약 현황") {
+			for (int i = 0; i < customers.size(); i++) {
+				Customer customer = customers.get(i);
+				buffer.append(customer.getCustomerName());
+				buffer.append("\t");
+				buffer.append(customer.getCustomerId());
+				buffer.append("\t");
+
+				buffer.append("\n");
+			}
 		}
+
 	}
 
 	private void makeHeader(Function function) {

@@ -7,6 +7,7 @@ public class Function {
 	private String funtionName;
 	private int functionType;
 	private ArrayList<Customer> customers = new ArrayList<>();
+	private ArrayList<Studio> studios = new ArrayList<>();
 
 	public Function(int functionId, String funtionName) {
 		this.fuctionId = -functionId;
@@ -46,8 +47,16 @@ public class Function {
 		this.customers = customers;
 	}
 
-//	---------------메소드
+	public ArrayList<Studio> getStudios() {
+		return studios;
+	}
+
+	// ---------------메소드
 	public void register(Customer customer) {
 		customers.add(customer);
+	}
+
+	public void register(Studio studio) {
+		studios.add(studio);
 	}
 }

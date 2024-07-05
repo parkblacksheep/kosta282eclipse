@@ -16,6 +16,7 @@ public class Hole {
 
 	private ArrayList<Customer> customers = new ArrayList<>();
 	private ArrayList<Function> functions = new ArrayList<>();
+	private ArrayList<Studio> studios = new ArrayList<>();
 
 	public ArrayList<Customer> getCustomers() {
 		return customers;
@@ -33,12 +34,24 @@ public class Hole {
 		this.functions = functions;
 	}
 
-//----
+	public ArrayList<Studio> getStudios() {
+		return studios;
+	}
+
+	public void setStudios(ArrayList<Studio> studios) {
+		this.studios = studios;
+	}
+
+	// ----
 	public void addFunction(Function function) {
 		functions.add(function);
 	}
 
 	public void addCustomer(Customer customer) {
 		customers.add(customer);
+	}
+
+	public void addStudio(Studio studio) {
+		studios.add(studio);
 	}
 }
